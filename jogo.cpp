@@ -17,9 +17,8 @@ int main (){
     float chancedacerto;
     char comando;
     bool posse = true;
-    cout << "escolha seu personagem : 1= 40% dunk, 54% 3 pontos, 70% media distancia, 2= 90% dunk, 22% 3 pontos, 50% media distancia, 3=25% dunk, 62% 3 pontos, 60 % media distancia ";
+    cout << endl <<"escolha seu personagem : 1= 40% dunk, 54% 3 pontos, 70% media distancia, 2= 90% dunk, 22% 3 pontos, 50% media distancia, 3=25% dunk, 62% 3 pontos, 60 % media distancia " << endl;
         cin >> persona;
-        quadra[jogadorX][jogadorY] = 1;
         if(persona == 1){
             dunk = 40;
             bolad3 = 54;
@@ -50,7 +49,7 @@ int main (){
         quadra[0][5] = 2;
         quadra[5][8] = 3;
         quadra[5][2] = 3;
-
+        quadra[jogadorX][jogadorY] = 1;
         for(int i = 0; i < 5;i++){
             quadra[i][1] = 3;
         }
@@ -111,9 +110,18 @@ int main (){
         else if (comando == 'w') {
             jogadorX--;
         }
-        else if (comando == 'c'){
+        else if(comando == 'c'){
             posse = false;
-        }
+            if (jogadorX == 1 && jogadorY >= 4 && jogadorY <= 6 ){
+                chancedacerto = dunk;
+            } 
+            else if(jogadorX <= 6 && jogadorY >= 1 && jogadorY <= 9){
+        chancedacerto = media;
+            }
+            else{
+        chancedacerto = bolad3;
+            }
+     }
         
         else if (comando == 's') {
             jogadorX++;
@@ -134,8 +142,6 @@ int main (){
 
         if(bolaX < 0){
             posse = true;
-        }
-        if(comando == 'c'){
         }
     }
 
